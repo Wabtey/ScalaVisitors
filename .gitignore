@@ -7,10 +7,10 @@ hs_err_pid*
 # Scala Metals
 .bloop
 .metals
-project
 target
-.scalafmt.conf
-build.sbt
+# project
+# .scalafmt.conf
+# build.sbt
 
 # Editors
 .vscode
