@@ -8,11 +8,12 @@ object PrettyPrinter {
     }
 
     private def stringOfIndent(p:Statement, i:Int, fromSeq: Boolean):String={
-        var indentation:String = ""
         // XXX: weird
+        var indentation:String = ""
         for (indent <- 0 until i) {
             indentation += " "
         }
+        
         indentation + (
             p match {
                 case Assignement(v, e) => v + ":= " + stringOf(e)
@@ -33,7 +34,12 @@ object PrettyPrinter {
                     
                 case Seq(s1, s2) =>
                     (if (fromSeq) { "" } else { "{\n" }) +
-                    stringOfIndent(s1, i+tab_space, true) + "\n" +
+                    stringOfIndent(
+                        s1,
+                        if(isASeq(s1)) { i } else { i+tab_space },
+                        true
+                    ) +
+                    "\n" +
                     stringOfIndent(
                         s2,
                         if(isASeq(s2)) { i } else { i+tab_space },
