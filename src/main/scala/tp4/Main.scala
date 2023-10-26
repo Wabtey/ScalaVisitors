@@ -37,7 +37,9 @@ object Main {
     )
 
     val p2 = 
-        Seq(
+        While(
+            BinExpression(Inf, VariableRef("x"), VariableRef("z")),
+            Seq(
             Assignement(
                 "x",
                 BinExpression(Plus, VariableRef("x"), IntegerValue(1))
@@ -48,6 +50,7 @@ object Main {
                 BinExpression(Times, VariableRef("y"), VariableRef("x"))
                 ),
                 Print(VariableRef("x"))
+            )
             )
         )
 

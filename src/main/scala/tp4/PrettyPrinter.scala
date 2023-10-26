@@ -24,7 +24,6 @@ object PrettyPrinter {
                 case Print(e) => "print(" + stringOf(e) + ")"
                 case Read(s) => "read(" + s + ")"
                 case Skip => "skip"
-                // FIXME: the `While` shifts the indentation 
                 case While(c, s) =>
                     "while(" + stringOf(c) + ") do\n" +
                         stringOfIndent(
@@ -32,6 +31,7 @@ object PrettyPrinter {
                             if(isASeq(s)) { i } else { i+tab_space },
                             false
                         )
+                // BUG: Indentation Shift
                 case Seq(s1, s2) =>
                     (if (fromSeq) { "" } else { "{\n" }) +
                     stringOfIndent(
