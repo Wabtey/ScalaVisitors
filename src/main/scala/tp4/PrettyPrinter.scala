@@ -31,7 +31,7 @@ object PrettyPrinter {
                             if(isASeq(s)) { i } else { i+tab_space },
                             false
                         )
-                // BUG: Indentation Shift
+                // FIXME: Indentation Shift when the `While` is in a `Seq`
                 case Seq(s1, s2) =>
                     (if (fromSeq) { "" } else { "{\n" }) +
                     stringOfIndent(

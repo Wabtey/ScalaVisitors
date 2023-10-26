@@ -37,22 +37,25 @@ object Main {
     )
 
     val p2 = 
-        While(
-            BinExpression(Inf, VariableRef("x"), VariableRef("z")),
-            Seq(
-            Assignement(
-                "x",
-                BinExpression(Plus, VariableRef("x"), IntegerValue(1))
-            ),
-            Seq(
+        Seq(
+            While(
+              BinExpression(Inf, VariableRef("x"), VariableRef("z")),
+              Seq(
                 Assignement(
-                "y",
-                BinExpression(Times, VariableRef("y"), VariableRef("x"))
+                  "x",
+                  BinExpression(Plus, VariableRef("x"), IntegerValue(1))
                 ),
-                Print(VariableRef("x"))
-            )
-            )
-        )
+                Seq(
+                  Assignement(
+                    "y",
+                    BinExpression(Times, VariableRef("y"), VariableRef("x"))
+                  ),
+                  Print(VariableRef("x"))
+                )
+              )
+            ),
+            Print(VariableRef("y"))
+          )
 
     println(PrettyPrinter.stringOf(exp) + "\n-----\n" + PrettyPrinter.stringOf(prog))
     println("\n-----\n" + PrettyPrinter.stringOf(p2))
